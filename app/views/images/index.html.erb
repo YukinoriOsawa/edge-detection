@@ -1,0 +1,55 @@
+<div class="container mx-auto px-4 py-8" data-controller="image-processor">
+  <div class="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-6">
+    <h1 class="text-2xl font-bold mb-6">色塗り絵作り</h1>
+
+    <%= form_with(url: process_edge_images_path, method: :post, data: { action: "submit->image-processor#processImage" }, class: "space-y-4 mb-8") do |f| %>
+      <div class="space-y-2">
+        <%= f.label :image, "画像を選択", class: "block text-sm font-medium text-gray-700" %>
+        <%= f.file_field :image, 
+            accept: 'image/jpeg,image/png', 
+            class: "block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100",
+            data: { action: "change->image-processor#previewImage" } %>
+      </div>
+
+      <div class="space-y-2">
+        <%= f.label :threshold, "閾値", class: "block text-sm font-medium text-gray-700" %>
+        <div class="flex items-center gap-4">
+          <%= f.range_field :threshold, 
+              min: 1, max: 200, value: 50,
+              class: "w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer",
+              data: { action: "input->image-processor#updateThreshold" } %>
+          <span data-image-processor-target="thresholdValue" class="text-sm text-gray-600">50</span>
+        </div>
+      </div>
+
+      <%= f.submit "処理開始", 
+          class: "w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 px-6 rounded-lg font-semibold shadow-md hover:from-blue-600 hover:to-indigo-700 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105",
+          data: { image_processor_target: "submitButton", action: "click->image-processor#validateAndProcess" } %>
+    <% end %>
+
+    <div data-image-processor-target="errorMessage" class="hidden mt-4 text-red-600 text-center"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="space-y-2">
+        <h2 class="text-lg font-semibold">元の画像</h2>
+        <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center border-2 border-gray-300">
+          <img data-image-processor-target="originalImage" class="max-w-full max-h-full object-contain" />
+        </div>
+      </div>
+      <div class="space-y-2">
+        <h2 class="text-lg font-semibold">処理後の画像</h2>
+        <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center border-2 border-gray-300">
+          <img data-image-processor-target="processedImage" class="max-w-full max-h-full object-contain" />
+        </div>
+      </div>
+    </div>
+
+    <div data-image-processor-target="loading" class="hidden mt-4">
+      <div class="flex items-center justify-center">
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+        <span class="ml-2 text-gray-600">処理中...</span>
+      </div>
+    </div>
+  </div>
+</div>
+
