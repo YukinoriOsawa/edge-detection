@@ -63,3 +63,7 @@ group :test do
 end
   gem "mini_magick"
   gem "chunky_png"
+  
+  group :production do
+    gem 'pg'
+  end
