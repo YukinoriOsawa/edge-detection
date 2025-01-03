@@ -5,28 +5,28 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     if @image.save
-      render json: { status: 'success', image_url: url_for(@image.file) }
+      render json: { status: "success", image_url: url_for(@image.file) }
     else
-      render json: { status: 'error', message: @image.errors.full_messages.join(', ') }
+      render json: { status: "error", message: @image.errors.full_messages.join(", ") }
     end
   end
 
   def process_edge
     begin
       Rails.logger.debug "Starting edge detection process"
-      
+
       original_image = MiniMagick::Image.read(params[:image].tempfile)
       processed_image = process_edge_detection(original_image, params[:threshold].to_i)
-      
+
       processed_base64 = Base64.strict_encode64(processed_image.to_blob)
-      render json: { 
-        status: 'success', 
+      render json: {
+        status: "success",
         processed_image: "data:image/png;base64,#{processed_base64}"
       }
     rescue => e
       Rails.logger.error "Edge detection error: #{e.message}"
       Rails.logger.error e.backtrace.join("\n")
-      render json: { status: 'error', message: '画像処理中にエラーが発生しました' }
+      render json: { status: "error", message: "画像処理中にエラーが発生しました" }
     end
   end
 
@@ -44,7 +44,7 @@ class ImagesController < ApplicationController
 
     (0...height).each do |y|
       (0...width).each do |x|
-        new_pixels[y][x] = [255, 255, 255]
+        new_pixels[y][x] = [ 255, 255, 255 ]
 
         if x < (width - 1) && y < (height - 1)
           current = pixels[y][x]
@@ -53,7 +53,7 @@ class ImagesController < ApplicationController
 
           if pixel_difference?(current, right, threshold) ||
              pixel_difference?(current, bottom, threshold)
-            new_pixels[y][x] = [0, 0, 0]
+            new_pixels[y][x] = [ 0, 0, 0 ]
           end
         end
       end
@@ -76,16 +76,16 @@ class ImagesController < ApplicationController
   def pixels_to_blob(pixels)
     height = pixels.length
     width = pixels[0].length
-    
+
     image = ChunkyPNG::Image.new(width, height, ChunkyPNG::Color::WHITE)
-    
+
     height.times do |y|
       width.times do |x|
         r, g, b = pixels[y][x]
         image[x, y] = ChunkyPNG::Color.rgb(r, g, b)
       end
     end
-    
+
     image.to_blob
   end
 end

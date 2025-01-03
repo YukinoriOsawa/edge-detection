@@ -8,4 +8,3 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 
 # Add the following line for Stimulus
 pin "@hotwired/stimulus", to: "stimulus.min.js", preload: true
-

@@ -9,12 +9,12 @@ class Image < ApplicationRecord
     return unless file.attached?
 
     unless file.byte_size <= 10.megabyte
-      errors.add(:file, 'サイズは10MB以下にしてください')
+      errors.add(:file, "サイズは10MB以下にしてください")
     end
 
-    acceptable_types = ["image/jpeg", "image/png"]
+    acceptable_types = [ "image/jpeg", "image/png" ]
     unless acceptable_types.include?(file.content_type)
-      errors.add(:file, 'はJPEGまたはPNG形式である必要があります')
+      errors.add(:file, "はJPEGまたはPNG形式である必要があります")
     end
   end
 end
