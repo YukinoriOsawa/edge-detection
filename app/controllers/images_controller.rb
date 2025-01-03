@@ -13,6 +13,8 @@ class ImagesController < ApplicationController
 
   def process_edge
     begin
+      Rails.logger.debug "Starting edge detection process"
+      
       original_image = MiniMagick::Image.read(params[:image].tempfile)
       processed_image = process_edge_detection(original_image, params[:threshold].to_i)
       
@@ -23,6 +25,7 @@ class ImagesController < ApplicationController
       }
     rescue => e
       Rails.logger.error "Edge detection error: #{e.message}"
+      Rails.logger.error e.backtrace.join("\n")
       render json: { status: 'error', message: '画像処理中にエラーが発生しました' }
     end
   end
@@ -86,4 +89,3 @@ class ImagesController < ApplicationController
     image.to_blob
   end
 end
-
