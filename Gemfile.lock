@@ -381,6 +381,7 @@ DEPENDENCIES
   solid_queue
   sqlite3 (>= 2.1)
   stimulus-rails
+  stringio (= 3.1.2)
   thruster
   turbo-rails
   tzinfo-data

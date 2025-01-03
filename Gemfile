@@ -64,6 +64,7 @@ end
   gem "mini_magick"
   gem "chunky_png"
   gem 'mysql2', '~> 0.5'
+  gem 'stringio', '3.1.2'
 
   group :production do
     gem 'pg'
