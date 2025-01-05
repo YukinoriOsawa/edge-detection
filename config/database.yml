@@ -1,34 +1,33 @@
 default: &default
+  adapter: postgresql
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
+  port: <%= ENV.fetch("DATABASE_PORT", 5432) %>
+  username: <%= ENV.fetch("DATABASE_USER", "postgres") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", "") %>
+  database: <%= ENV.fetch("DATABASE_NAME", "edge_detection_default") %>
 
 development:
   <<: *default
-  adapter: mysql2
-  username: root
-  password:
-  host: localhost
-  database: edge-detection_development
+  database: edge_detection_development
 
 test:
   <<: *default
-  adapter: mysql2
-  username: root
-  password:
-  host: localhost
-  database: edge-detection_test
+  database: edge_detection_test
 
 production:
   <<: *default
-  adapter: postgresql
   url: <%= ENV['DATABASE_URL'] %>
 
 cable:
   <<: *default
-  adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
+  database: edge_detection_cable
 
 queue:
   <<: *default
-  adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
+  database: edge_detection_queue
+
+cache:
+  <<: *default
+  database: edge_detection_cache
