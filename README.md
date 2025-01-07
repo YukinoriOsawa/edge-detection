@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. アプリケーション名 
+     色抜きアプリ
 
-Things you may want to cover:
+2. アプリケーション概要
+     アップロードした画像を枠線を検出しつつ、白黒にするアプリです。
 
-* Ruby version
+3. URL
+　　　https://edge-detection-41696.onrender.com   
 
-* System dependencies
+4. 利用方法
+    アプリを開く（ブラウザでアクセスする）
+    「画像を選択」ボタンをタップする
+選択した画像が「元の画像」欄にプレビュー表示されることを確認する
+エッジ検出の閾値を調整する
+「処理開始」ボタンをタップする
+処理中は「処理中...」の表示を待つ
+完成画像を確認する
 
-* Configuration
+5. アプリケーションを作成した背景
+     子供たちが好きな絵を塗り絵にできたら楽しいだろうと思い、画像の輪郭を検出して塗り絵に変換するアプリケーションを作りたいと考えました。これにより、自分だけのオリジナルな塗り絵を楽しむことができます。
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+6. 実装した機能についての画像やGIFおよびその説明
+　　　　
