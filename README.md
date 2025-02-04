@@ -23,8 +23,12 @@
 
 # 6. 実装した機能についての画像やGIFおよびその説明
 
-[![Image from Gyazo](https://i.gyazo.com/edeea6f8a96efabf17259c4e88313024.png)](https://gyazo.com/edeea6f8a96efabf17259c4e88313024)
+[![Image from Gyazo](https://i.gyazo.com/e6a3a9091771a6eccdf275cb7f8350a1.png)](https://gyazo.com/e6a3a9091771a6eccdf275cb7f8350a1)
+
 値の調整ができること。
+処理後　並んで表示される。
+処理できない場合、エラー文　表示。
+
 
 # 7. 実装予定の機能
      ボタンなどのデザイン変更。
