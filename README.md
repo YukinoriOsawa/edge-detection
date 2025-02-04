@@ -31,9 +31,21 @@
 
 # 6. 実装した機能についての画像やGIFおよびその説明
 
+    トップページ
+[![Image from Gyazo](https://i.gyazo.com/9b367019e27cb2ff0ca96b2315be39fb.png)](https://gyazo.com/9b367019e27cb2ff0ca96b2315be39fb)
+
+
+    ファイル選択より、画像アップロード。
+[![Image from Gyazo](https://i.gyazo.com/e8d10c6cc64270a05d1727d060e77166.png)](https://gyazo.com/e8d10c6cc64270a05d1727d060e77166)
+
+
+    処理開始ボタンで画像処理。
 [![Image from Gyazo](https://i.gyazo.com/e6a3a9091771a6eccdf275cb7f8350a1.png)](https://gyazo.com/e6a3a9091771a6eccdf275cb7f8350a1)
 
-    値の調整ができること。
+
+    数値を変えた場合の処理結果。
+[![Image from Gyazo](https://i.gyazo.com/1cc728699c0bc7de74e2ae50dc37d82d.png)](https://gyazo.com/1cc728699c0bc7de74e2ae50dc37d82d)
+
 
     処理後　並んで表示される。
 
